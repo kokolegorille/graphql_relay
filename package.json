@@ -1,0 +1,7 @@
+{
+  "name": "graphlql_relay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "koko.le.gorille <koko.le.gorille@gmail.com>",
+  "license": "MIT"
+}
