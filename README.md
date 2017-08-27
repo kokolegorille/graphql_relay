@@ -99,3 +99,27 @@ Update package.json
 
 $ yarn 
 $ yarn update-schema
+
+## Configure Eslint
+
+Add eslint globally
+
+$ yarn global add eslint
+
+Bootstrap eslint, answer to some questions, select format
+
+$ eslint --init
+
+$ mv .eslintrc.js .eslintrc
+
+Add .eslintignore
+
+$ vim .eslintignore
+__generated__
+
+
+Add script to package.json to run linting
+
+"lint": "eslint src"
+
+$ yarn lint
