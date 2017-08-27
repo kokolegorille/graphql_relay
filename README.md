@@ -1,10 +1,13 @@
 # GrahQL w/ Node & React Relay
 
+Server
+
     "express": "^4.15.4",
     "express-graphql": "^0.6.7",
     "graphql": "^0.10.5",
     "graphql-relay": "^0.5.2",
 
+Client
 
     "babel-polyfill": "^6.16.0",    
     "react": "^15.6.1",
@@ -12,6 +15,8 @@
     "react-relay": "^1.2.0",
     "whatwg-fetch": "^2.0.3"
 
+
+Dev dependencies
 
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -53,3 +58,44 @@ $ vim .gitignore
 $ yarn init -y
 $ touch README.md
 ```
+
+## Server side
+
+Add 
+
+  .babelrc
+  server.js
+  /data
+    schema.js
+  /scripts
+    update_schema.js
+
+Update package.json
+
+```
+{
+  "name": "graphlql_relay",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node ./server.js",
+    "update-schema": "babel-node ./scripts/update_schema.js"
+  },
+  "author": "koko.le.gorille <koko.le.gorille@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-graphql": "^0.6.7",
+    "graphql": "^0.10.5",
+    "graphql-relay": "^0.5.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
+```
+
+$ yarn 
+$ yarn update-schema
