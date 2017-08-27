@@ -46,7 +46,7 @@ function main() {
       environment={environment}
       query={graphql`
         query appQuery {
-          videos(first: 3) {
+          videos(first: 1) {
             totalCount,
             pageInfo {
               hasNextPage

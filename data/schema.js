@@ -45,7 +45,7 @@ const {nodeInterface, nodeField} = nodeDefinitions(
 const videoType = new GraphQLObjectType({
   name: 'Video',
   description: 'The video type.',
-  fields: {
+  fields: () => ({
     id: globalIdField(),
     title: {
       type: GraphQLString,
@@ -59,7 +59,7 @@ const videoType = new GraphQLObjectType({
       type: GraphQLBoolean,
       description: 'Wether or not the viewer has watched the video.'
     }
-  },
+  }),
   interfaces: [nodeInterface]
 });
 
@@ -77,7 +77,7 @@ const {connectionType: VideoConnection} = connectionDefinitions({
 const queryType = new GraphQLObjectType({
   name: 'Query',
   description: 'The root query type.',
-  fields: {
+  fields: () => ({
     node: nodeField,
     videos: {
       type: VideoConnection,
@@ -97,7 +97,7 @@ const queryType = new GraphQLObjectType({
       },
       resolve: (_, args) => getVideoById(args.id)
     }
-  }
+  })
 });
 
 const videoMutation = new mutationWithClientMutationId({
@@ -131,9 +131,9 @@ const videoMutation = new mutationWithClientMutationId({
 const mutationType = new GraphQLObjectType({
   name: 'Mutation',
   description: 'The root mutation type.',
-  fields: {
+  fields: () => ({
     createVideo: videoMutation
-  }
+  })
 });
 
 const schema = new GraphQLSchema({
