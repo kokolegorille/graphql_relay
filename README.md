@@ -7,6 +7,15 @@ Server
     "graphql": "^0.10.5",
     "graphql-relay": "^0.5.2",
 
+Server dev dependencies
+
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.5.0",
+    "eslint-plugin-babel": "3.3.0",
+
 Client
 
     "babel-polyfill": "^6.16.0",    
@@ -16,23 +25,15 @@ Client
     "whatwg-fetch": "^2.0.3"
 
 
-Dev dependencies
+Full dev dependencies
 
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-relay": "^1.2.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "eslint": "^4.5.0",
-    "eslint-config-fbjs": "1.1.1",
-    "eslint-plugin-babel": "3.3.0",
-    "eslint-plugin-flowtype": "2.15.0",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-react": "^7.3.0"
     "relay-compiler": "^1.2.0",
     "webpack": "^3.5.5"    
 
@@ -137,6 +138,7 @@ Update data/schema
 
 Pagination
 
+```
 {
   videos(first: 2) {
     totalCount,
@@ -156,9 +158,11 @@ Pagination
     }
   }
 }
+```
 
 Node interface
 
+```
 {
   node(id: "VmlkZW86YjUxYWVjMWVkYmIwOWE3ZmZlMDU=") {
     ... on Video {
@@ -169,9 +173,11 @@ Node interface
     }
   }
 }
+```
 
 Mutation with query variables
 
+```
 mutation AddVideoQuery($input: AddVideoInput!) {
   createVideo(input: $input) {
     video {
@@ -189,3 +195,21 @@ mutation AddVideoQuery($input: AddVideoInput!) {
     "clientMutationId": "abcd"
   }
 }
+```
+
+## Frontend
+
+Add
+  webpack.config.js
+  src/
+    index.js
+  public/
+    index.html
+
+Add dependencies
+
+Edit package.json, add client scripts
+
+Edit server.js
+
+  

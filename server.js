@@ -16,7 +16,7 @@ graphQLServer.use('/graphql', graphqlHTTP({
 }));
 
 // Client side
-// graphQLServer.use(express.static('public'));
+graphQLServer.use(express.static('public'));
 
 graphQLServer.listen(
   PORT, 

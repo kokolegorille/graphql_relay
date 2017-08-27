@@ -25,6 +25,8 @@ const createVideo = (({title, duration, watched}) => {
   return video;
 });
 
+// TODO: check that type exists!
+
 const getObjectById = (type, id) => {
   const types = {
     video: getVideoById
