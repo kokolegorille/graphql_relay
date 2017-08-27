@@ -33,7 +33,8 @@ Full dev dependencies
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-flowtype": "2.15.0",
+    "eslint-plugin-react": "^7.3.0",
     "relay-compiler": "^1.2.0",
     "webpack": "^3.5.5"    
 
@@ -202,7 +203,8 @@ mutation AddVideoQuery($input: AddVideoInput!) {
 Add
   webpack.config.js
   src/
-    index.js
+    app.js
+    environment.js
   public/
     index.html
 
@@ -211,5 +213,18 @@ Add dependencies
 Edit package.json, add client scripts
 
 Edit server.js
+
+Edit scripts/update_schema.js, to correctly import schema
+
+    "relay": "relay-compiler --src ./src --schema ./data/schema.graphql",
+    "update-schema": "babel-node ./scripts/update_schema.js",
+    "build:dev": "webpack --progress --colors --watch",
+    "build:prod": "NODE_ENV=production webpack --progress --colors -p",
+
+run scripts
+
+$ yarn update-schema
+$ yarn relay
+$ yarn build:dev
 
   
