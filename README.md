@@ -123,3 +123,69 @@ Add script to package.json to run linting
 "lint": "eslint src"
 
 $ yarn lint
+
+## Add data and complex schema
+
+Add 
+  data/
+    data.json
+    database.js
+
+Update data/schema
+
+## GraphQL sample queries
+
+Pagination
+
+{
+  videos(first: 2) {
+    totalCount,
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    },
+    edges {
+      node {
+        id
+        title
+        duration
+        watched
+      }
+    }
+  }
+}
+
+Node interface
+
+{
+  node(id: "VmlkZW86YjUxYWVjMWVkYmIwOWE3ZmZlMDU=") {
+    ... on Video {
+      id,
+      title,
+      duration,
+      watched
+    }
+  }
+}
+
+Mutation with query variables
+
+mutation AddVideoQuery($input: AddVideoInput!) {
+  createVideo(input: $input) {
+    video {
+      id,
+      title
+    }
+  }
+}
+
+{
+  "input": {
+    "title": "Yo c moi Mike le rappeur",
+    "duration": 180,
+    "watched": false,
+    "clientMutationId": "abcd"
+  }
+}
