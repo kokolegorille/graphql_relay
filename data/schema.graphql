@@ -1,3 +1,92 @@
+input AddVideoInput {
+  # The title of the video.
+  title: String
+
+  # The duration of the video (in secondes).
+  duration: Int
+
+  # Wether or not the viewer has watched the video.
+  watched: Boolean
+  clientMutationId: String
+}
+
+type AddVideoPayload {
+  video: Video
+  clientMutationId: String
+}
+
+# The root mutation type.
+type Mutation {
+  createVideo(input: AddVideoInput!): AddVideoPayload
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+# The root query type.
 type Query {
-  hello: String
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+  videos(after: String, first: Int, before: String, last: Int): VideoConnection
+  video(
+    # The ID of the video.
+    id: ID!
+  ): Video
+}
+
+# The video type.
+type Video implements Node {
+  # The ID of an object
+  id: ID!
+
+  # The title of the video.
+  title: String
+
+  # The duration of the video (in secondes).
+  duration: Int
+
+  # Wether or not the viewer has watched the video.
+  watched: Boolean
+}
+
+# A connection to a list of items.
+type VideoConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [VideoEdge]
+
+  # Total count of the video on this connection.
+  totalCount: Int
+}
+
+# An edge in a connection.
+type VideoEdge {
+  # The item at the end of the edge
+  node: Video
+
+  # A cursor for use in pagination
+  cursor: String!
 }

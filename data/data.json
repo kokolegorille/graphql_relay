@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Video 1",
+    "duration": 120,
+    "watched": true
+  },
+  {
+    "title": "Video 2",
+    "duration": 180,
+    "watched": true
+  },
+  {
+    "title": "Video 3",
+    "duration": 240,
+    "watched": false
+  }
+]
