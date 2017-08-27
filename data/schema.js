@@ -11,6 +11,10 @@ import {
 } from 'graphql';
 
 import {
+  // Node interface
+  fromGlobalId,
+  nodeDefinitions,
+  // Connection and globalId
   globalIdField,
   connectionDefinitions,
   connectionFromPromisedArray,
@@ -21,10 +25,22 @@ import {
 import {
   getVideoById,
   getVideos,
-  createVideo
+  createVideo,
+  getObjectById
 } from './database';
 
-import {nodeInterface, nodeField} from './node';
+const {nodeInterface, nodeField} = nodeDefinitions(
+  (globalId) => {
+    const {type, id} = fromGlobalId(globalId);
+    return getObjectById(type.toLowerCase(), id);
+  },
+  (object) => {
+    if (object.title) {
+      return videoType
+    };
+    return null;
+  }
+)
 
 const videoType = new GraphQLObjectType({
   name: 'Video',
@@ -46,8 +62,6 @@ const videoType = new GraphQLObjectType({
   },
   interfaces: [nodeInterface]
 });
-
-export {videoType};
 
 const {connectionType: VideoConnection} = connectionDefinitions({
   nodeType: videoType,
@@ -122,7 +136,9 @@ const mutationType = new GraphQLObjectType({
   }
 });
 
-export const schema = new GraphQLSchema({
+const schema = new GraphQLSchema({
   query: queryType,
   mutation: mutationType
 });
+
+export default schema;

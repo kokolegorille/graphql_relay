@@ -4,7 +4,8 @@ const videos = data.map((obj) => {
   const video = {};
   video.id = require('crypto').randomBytes(10).toString('hex');
   video.title = obj.title;
-  video.url = obj.url;
+  video.duration = obj.duration;
+  video.watched = obj.watched;
   return video;
 });
 
@@ -26,7 +27,7 @@ const createVideo = (({title, duration, watched}) => {
 
 const getObjectById = (type, id) => {
   const types = {
-    videotype: getVideoById
+    video: getVideoById
   };
   return types[type](id);
 }
