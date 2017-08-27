@@ -7,8 +7,37 @@ import {
 } from 'react-relay';
 
 import environment from './environment';
+import Videos from './components/videos';
 
 main();
+
+// function main() {
+//   const app = document.getElementById('app');
+//   render(
+//     <QueryRenderer
+//       environment={environment}
+//       query={graphql`
+//         query appQuery {
+//           videos(first: 3) {
+//             ...videos_videos
+//           }
+//         }
+//       `}
+//       variables={{}}
+//       render={({error, props}) => {
+//         if (error) {
+//           return <div>{error.message}</div>;
+//         } else if (props) {
+//           return <Videos videos={props.videos} />;
+//           // console.log(props);
+//           // return <p>ok</p>;
+//         }
+//         return <div>Loading...</div>;
+//       }}
+//     />,
+//     app
+//   );
+// }
 
 function main() {
   const app = document.getElementById('app');
@@ -17,7 +46,7 @@ function main() {
       environment={environment}
       query={graphql`
         query appQuery {
-          videos(first: 2) {
+          videos(first: 3) {
             totalCount,
             pageInfo {
               hasNextPage
@@ -41,9 +70,9 @@ function main() {
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
-          // return <Videos videos={props.videos} />;
-          console.log(props);
-          return <p>ok</p>;
+          return <Videos videos={props.videos} />;
+          // console.log(props);
+          // return <p>ok</p>;
         }
         return <div>Loading...</div>;
       }}
