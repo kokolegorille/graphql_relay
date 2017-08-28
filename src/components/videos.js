@@ -2,7 +2,7 @@ import React from 'react';
 // import { createFragmentContainer, graphql } from 'react-relay';
 
 import Video from './video';
-import PageInfo from './page_info';
+import PageInfo from './pageInfo';
 
 const Videos = ({videos}) => (
   <div>

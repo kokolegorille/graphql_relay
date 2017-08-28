@@ -74,7 +74,7 @@ const {connectionType: VideoConnection} = connectionDefinitions({
   })
 });
 
-// Query root entry point, can be anything
+// Store entry point, can be anything
 // usually called viewer
 const storeType = new GraphQLObjectType({
   name: 'Store',

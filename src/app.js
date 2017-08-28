@@ -7,7 +7,7 @@ import {
 } from 'react-relay';
 
 import environment from './environment';
-import Videos from './components/videos';
+import Store from './components/store';
 
 main();
 
@@ -39,6 +39,50 @@ main();
 //   );
 // }
 
+// function main() {
+//   const app = document.getElementById('app');
+//   render(
+//     <QueryRenderer
+//       environment={environment}
+//       query={graphql`
+//         query appQuery {
+//           store {
+//             videos(first: 1) {
+//               totalCount,
+//               pageInfo {
+//                 hasNextPage
+//                 hasPreviousPage
+//                 startCursor
+//                 endCursor
+//               },
+//               edges {
+//                 node {
+//                   id
+//                   title
+//                   duration
+//                   watched
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       `}
+//       variables={{}}
+//       render={({error, props}) => {
+//         if (error) {
+//           return <div>{error.message}</div>;
+//         } else if (props) {
+//           return <Videos videos={props.store.videos} />;
+//           // console.log(props);
+//           // return <p>ok</p>;
+//         }
+//         return <div>Loading...</div>;
+//       }}
+//     />,
+//     app
+//   );
+// }
+
 function main() {
   const app = document.getElementById('app');
   render(
@@ -47,23 +91,7 @@ function main() {
       query={graphql`
         query appQuery {
           store {
-            videos(first: 1) {
-              totalCount,
-              pageInfo {
-                hasNextPage
-                hasPreviousPage
-                startCursor
-                endCursor
-              },
-              edges {
-                node {
-                  id
-                  title
-                  duration
-                  watched
-                }
-              }
-            }
+            ...store_store
           }
         }
       `}
@@ -72,7 +100,7 @@ function main() {
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
-          return <Videos videos={props.store.videos} />;
+          return <Store store={props.store} />;
           // console.log(props);
           // return <p>ok</p>;
         }

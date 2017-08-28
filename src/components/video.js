@@ -1,4 +1,5 @@
 import React from 'react';
+import { createFragmentContainer, graphql } from 'react-relay';
 
 const Video = ({video}) => (
   <dl>
@@ -11,4 +12,12 @@ const Video = ({video}) => (
   </dl>
 );
 
-export default Video;
+export default createFragmentContainer(Video, {
+  video: graphql`
+    fragment video_video on Video {
+      title,
+      duration,
+      watched
+    }
+  `,
+});
