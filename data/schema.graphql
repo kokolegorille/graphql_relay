@@ -43,6 +43,11 @@ type PageInfo {
 
 # The root query type.
 type Query {
+  store: Store
+}
+
+# The store query type.
+type Store {
   # Fetches an object given its ID
   node(
     # The ID of an object

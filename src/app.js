@@ -46,20 +46,22 @@ function main() {
       environment={environment}
       query={graphql`
         query appQuery {
-          videos(first: 1) {
-            totalCount,
-            pageInfo {
-              hasNextPage
-              hasPreviousPage
-              startCursor
-              endCursor
-            },
-            edges {
-              node {
-                id
-                title
-                duration
-                watched
+          store {
+            videos(first: 1) {
+              totalCount,
+              pageInfo {
+                hasNextPage
+                hasPreviousPage
+                startCursor
+                endCursor
+              },
+              edges {
+                node {
+                  id
+                  title
+                  duration
+                  watched
+                }
               }
             }
           }
@@ -70,7 +72,7 @@ function main() {
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
-          return <Videos videos={props.videos} />;
+          return <Videos videos={props.store.videos} />;
           // console.log(props);
           // return <p>ok</p>;
         }

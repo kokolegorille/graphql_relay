@@ -74,9 +74,11 @@ const {connectionType: VideoConnection} = connectionDefinitions({
   })
 });
 
-const queryType = new GraphQLObjectType({
-  name: 'Query',
-  description: 'The root query type.',
+// Query root entry point, can be anything
+// usually called viewer
+const storeType = new GraphQLObjectType({
+  name: 'Store',
+  description: 'The store query type.',
   fields: () => ({
     node: nodeField,
     videos: {
@@ -96,6 +98,18 @@ const queryType = new GraphQLObjectType({
         }
       },
       resolve: (_, args) => getVideoById(args.id)
+    }
+  })
+});
+
+const store = {};
+const queryType = new GraphQLObjectType({
+  name: 'Query',
+  description: 'The root query type.',
+  fields: () => ({
+    store: {
+      type: storeType,
+      resolve: () => store
     }
   })
 });
