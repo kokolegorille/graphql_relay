@@ -43,16 +43,16 @@ type PageInfo {
 
 # The root query type.
 type Query {
-  store: Store
-}
-
-# The store query type.
-type Store {
   # Fetches an object given its ID
   node(
     # The ID of an object
     id: ID!
   ): Node
+  store: Store
+}
+
+# The store query type.
+type Store {
   videos(after: String, first: Int, before: String, last: Int): VideoConnection
   video(
     # The ID of the video.

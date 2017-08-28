@@ -248,5 +248,5 @@ To pass variables between fragments, they are first set on QueryRenderer and pas
 
 view docs on : https://facebook.github.io/relay/docs/refetch-container.html 
 
-
+It should be included inside pagination/refetch containers now
   

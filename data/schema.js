@@ -85,7 +85,6 @@ const storeType = new GraphQLObjectType({
   name: 'Store',
   description: 'The store query type.',
   fields: () => ({
-    node: nodeField,
     videos: {
       type: VideoConnection,
       args: connectionArgs,
@@ -112,6 +111,7 @@ const queryType = new GraphQLObjectType({
   name: 'Query',
   description: 'The root query type.',
   fields: () => ({
+    node: nodeField,
     store: {
       type: storeType,
       resolve: () => store
