@@ -65,6 +65,9 @@ type Video implements Node {
   # The ID of an object
   id: ID!
 
+  # The internal id of the video.
+  internalId: ID!
+
   # The title of the video.
   title: String
 

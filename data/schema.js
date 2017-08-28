@@ -47,6 +47,11 @@ const videoType = new GraphQLObjectType({
   description: 'The video type.',
   fields: () => ({
     id: globalIdField(),
+    internalId: {
+      type: new GraphQLNonNull(GraphQLID),
+      description: 'The internal id of the video.',
+      resolve: obj => obj.id
+    },
     title: {
       type: GraphQLString,
       description: 'The title of the video.'
