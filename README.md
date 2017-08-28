@@ -227,4 +227,18 @@ $ yarn update-schema
 $ yarn relay
 $ yarn build:dev
 
+## Add React Relay components
+
+Add virtual store property on schema
+Split app into multiple fragments
+
+app
+  -> components/store
+      :totalCount
+      :pageInfo
+      :videos
+    -> components/video
+      :title
+      :duration
+      :watched
   
