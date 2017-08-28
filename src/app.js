@@ -16,14 +16,14 @@ function main() {
   render(
     <QueryRenderer
       environment={environment}
-      query={graphql`
-        query appQuery {
+      query={graphql.experimental`
+        query appQuery($limit: Int) {
           store {
-            ...store_store
+            ...store_store @arguments(limit: $limit)
           }
         }
       `}
-      variables={{}}
+      variables={{limit: 2}}
       render={({error, props}) => {
         if (error) {
           return <div>{error.message}</div>;

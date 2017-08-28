@@ -17,9 +17,13 @@ const Store = ({store}) => (
 );
 
 export default createFragmentContainer(Store, {
-  store: graphql`
-    fragment store_store on Store {
-      videos(first: 2) {
+  store: graphql.experimental`
+    fragment store_store on Store 
+    @argumentDefinitions(
+      limit: {type: "Int", defaultValue: 10}
+    )
+    {
+      videos(first: $limit) {
         edges {
           node {
             id,

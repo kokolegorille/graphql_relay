@@ -241,4 +241,12 @@ app
       :title
       :duration
       :watched
+      
+## GraphQL experimental
+
+To pass variables between fragments, they are first set on QueryRenderer and passed to children fragments. You need to use graphql.experimental to use this functionality with Relay Modern!
+
+view docs on : https://facebook.github.io/relay/docs/refetch-container.html 
+
+
   
