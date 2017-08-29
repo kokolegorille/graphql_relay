@@ -22,7 +22,7 @@ const plugins = [
 
 module.exports = {
   entry: {
-    bundle: ['whatwg-fetch', SRC_PATH + '/app']
+    bundle: ['whatwg-fetch', SRC_PATH + '/index']
   },
   output: {
     path: BUILD_PATH,
