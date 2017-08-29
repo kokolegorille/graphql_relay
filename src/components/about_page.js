@@ -5,8 +5,8 @@ const AboutPage = () => (
     <h1>About</h1>
     <p>Application stack :</p>
   	<ul>
-      <li>Absinthe GraphQL</li>
-      <li>Phoenix</li>
+      <li>Node</li>
+      <li>GraphQL</li>
   		<li>React</li>
       <li>Relay</li>
   	</ul>

@@ -16,7 +16,12 @@ graphQLServer.use('/graphql', graphqlHTTP({
 }));
 
 // Client side
-graphQLServer.use(express.static('public'));
+graphQLServer.use(express.static(__dirname + '/public'));
+
+// Force all remaining to public/index.html
+graphQLServer.get('/*', 
+  (req, res) => res.sendFile(__dirname + '/public/index.html')
+);
 
 graphQLServer.listen(
   PORT, 
