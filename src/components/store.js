@@ -19,7 +19,6 @@ class Store extends Component {
           Load more...
         </button>
         <hr/>
-        <p>Total count : {store.videos.totalCount}</p>
         <PageInfo pageInfo={store.videos.pageInfo} />
       </div>
     );
@@ -32,7 +31,7 @@ class Store extends Component {
     
     this.props.relay.loadMore(
       3, // Fetch the next 3 feed items
-      e => {console.log(e)}
+      e => {if (e) console.log(e)}
     );
   }
 }
@@ -104,7 +103,6 @@ export default createPaginationContainer(
                 ...video_video
               }
             },
-            totalCount,
             pageInfo {
               hasPreviousPage,
               hasNextPage,
