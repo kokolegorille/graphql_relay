@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PageInfo = ({pageInfo}) => (
-  <dl>
+  <dl className="dl-horizontal">
     <dt>Has previous page</dt>
     <dd>{pageInfo.hasPreviousPage ? "true" : "false"}</dd>
     <dt>Has next page</dt>

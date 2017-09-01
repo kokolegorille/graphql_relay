@@ -6,6 +6,7 @@ const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const BUILD_PATH = path.resolve(ROOT_PATH, './public');
 
 const Webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const plugins = [
   new Webpack.DefinePlugin({
@@ -17,7 +18,8 @@ const plugins = [
     compress: {
       warnings: false
     }
-  })
+  }),
+  new ExtractTextPlugin("css/styles.css")
 ];
 
 module.exports = {
@@ -43,7 +45,17 @@ module.exports = {
           presets: ['es2015', 'react', 'stage-0'],
           plugins: ["relay", "transform-runtime"]
         }
-      }
+      },
+      {
+        test: /(\.css)$/, 
+        loader: ExtractTextPlugin.extract("css-loader")
+      },
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader"},
+      {test: /\.woff2$/, loader: "url-loader?prefix=font/&limit=100000&mimetype=application/font-woff2"},
+      {test: /\.woff$/, loader: "url-loader?prefix=font/&limit=100000&mimetype=application/font-woff"},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream"},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml"},
+      {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
     ]
   },
   plugins: plugins

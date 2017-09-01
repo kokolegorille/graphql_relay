@@ -1,0 +1,63 @@
+/* Simple inline menu */
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  padding-right: 1em;
+}
+
+nav ul li a.active {
+  font-weight: bold;
+}
+
+/*
+nav ul li a {
+  text-decoration: none;
+}
+*/
+
+a { 
+  text-decoration: none; 
+}
+
+/* EXTRACT FROM BOOTSTRAP */
+/* Definition List */
+dl.dl-horizontal {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+dl.dl-horizontal dt {
+  clear: left;
+  float: left;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100px;
+  font-weight: bold;
+}
+
+dl.dl-horizontal dd::before,
+dl.dl-horizontal dd::after {
+  content: " ";
+  display: table;
+}
+
+dl.dl-horizontal dd::after {
+  clear: both;
+}
+
+dl.dl-horizontal dd {
+  margin-left: 120px;
+}
+
+.list-unstyled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

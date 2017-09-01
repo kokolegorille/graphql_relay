@@ -12,13 +12,13 @@ const HomePage = () => (
   <QueryRenderer
     environment={environment}
     query={graphql.experimental`
-      query homePageQuery($limit: Int) {
+      query homePageQuery($count: Int!) {
         store {
-          ...store_store @arguments(limit: $limit)
+          ...store_store @arguments(count: $count)
         }
       }
     `}
-    variables={{limit: 2}}
+    variables={{count: 3}}
     render={({error, props}) => {
       if (error) {
         return <div>{error.message}</div>;
@@ -30,4 +30,38 @@ const HomePage = () => (
   />
 );
   
-export default HomePage;  
+export default HomePage;
+
+// import React from 'react';
+//
+// import {
+//   QueryRenderer,
+//   graphql,
+// } from 'react-relay';
+//
+// import environment from '../environment';
+// import Store from './store';
+//
+// const HomePage = () => (
+//   <QueryRenderer
+//     environment={environment}
+//     query={graphql.experimental`
+//       query homePageQuery($limit: Int) {
+//         store {
+//           ...store_store @arguments(limit: $limit)
+//         }
+//       }
+//     `}
+//     variables={{limit: 5}}
+//     render={({error, props}) => {
+//       if (error) {
+//         return <div>{error.message}</div>;
+//       } else if (props) {
+//         return <Store store={props.store} />;
+//       }
+//       return <div>Loading...</div>;
+//     }}
+//   />
+// );
+//
+// export default HomePage;

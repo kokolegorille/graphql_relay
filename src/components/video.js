@@ -3,7 +3,7 @@ import { createFragmentContainer, graphql } from 'react-relay';
 
 const Video = ({video}) => (
   <div>
-    <dl>
+    <dl className="dl-horizontal">
       <dt>Internal ID</dt>
       <dd>{video.internalId}</dd>
       <dt>Title</dt>
