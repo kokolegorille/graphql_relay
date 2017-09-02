@@ -12,7 +12,9 @@ const HomePage = () => (
   <QueryRenderer
     environment={environment}
     query={graphql.experimental`
-      query homePageQuery($count: Int!) {
+      query homePageQuery(
+        $count: Int!
+      ) {
         store {
           ...store_store @arguments(count: $count)
         }

@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
-import { createPaginationContainer, graphql } from 'react-relay';
+import { 
+  createRefetchContainer,
+  createPaginationContainer, 
+  graphql 
+} from 'react-relay';
+
 import PageInfo from './pageInfo';
 import Video from './video';
 
@@ -37,14 +42,14 @@ class Store extends Component {
 }
 
 export default createPaginationContainer(
-  Store, 
+  Store,
   {
     store: graphql.experimental`
-      fragment store_store on Store 
+      fragment store_store on Store
       @argumentDefinitions(
         count: {type: "Int", defaultValue: 20}
         cursor: {type: "String"}
-      ) 
+      )
       {
         videos(
           first: $count
@@ -56,7 +61,6 @@ export default createPaginationContainer(
               ...video_video
             }
           },
-          totalCount,
           pageInfo {
             hasPreviousPage,
             hasNextPage,
@@ -116,75 +120,35 @@ export default createPaginationContainer(
   }
 );
 
-// export default createFragmentContainer(Store, {
-//   store: graphql.experimental`
-//     fragment store_store on Store
-//     @argumentDefinitions(
-//       count: {type: "Int", defaultValue: 3}
-//     )
-//     {
-//       videos(first: $count) {
-//         edges {
-//           node {
-//             id,
-//             ...video_video
+
+// export default createRefetchContainer(
+//   Store,
+//   {
+//     store: graphql.experimental`
+//       fragment store_store on Store
+//       @connection(key: "storeRefetch_store") {
+//         videos {
+//           edges {
+//             node {
+//               id
+//               ...video_video
+//             }
 //           }
-//         },
-//         totalCount,
-//         pageInfo {
-//           hasPreviousPage,
-//           hasNextPage,
-//           startCursor,
-//           endCursor
+//           pageInfo {
+//             hasNextPage
+//             hasPreviousPage
+//             startCursor
+//             endCursor
+//           }
 //         }
+//       }
+//     `
+//   },
+//   graphql.experimental`
+//     query storeRefetchQuery {
+//       store {
+//         ...store_store
 //       }
 //     }
 //   `,
-// });
-
-
-
-
-// import React from 'react';
-// import { createFragmentContainer, graphql } from 'react-relay';
-// import PageInfo from './pageInfo';
-// import Video from './video';
-//
-// const Store = ({store}) => (
-//   <div>
-//     <ul>
-//       {
-//         store.videos.edges.map(edge => <Video video={edge.node} />)
-//       }
-//     </ul>
-//     <hr/>
-//     <p>Total count : {store.videos.totalCount}</p>
-//     <PageInfo pageInfo={store.videos.pageInfo} />
-//   </div>
 // );
-//
-// export default createFragmentContainer(Store, {
-//   store: graphql.experimental`
-//     fragment store_store on Store
-//     @argumentDefinitions(
-//       limit: {type: "Int", defaultValue: 10}
-//     )
-//     {
-//       videos(first: $limit) {
-//         edges {
-//           node {
-//             id,
-//             ...video_video
-//           }
-//         },
-//         totalCount,
-//         pageInfo {
-//           hasPreviousPage,
-//           hasNextPage,
-//           startCursor,
-//           endCursor
-//         }
-//       }
-//     }
-//   `,
-// });
