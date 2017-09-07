@@ -10,12 +10,12 @@ const App = ({children}) => (
   <div>
     <NavBar />
     <main role="main">
-    <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
 
-      <Route path="/about" component={AboutPage} />
-      <Route component={NoMatchPage} />
-    </Switch>
+        <Route path="/about" component={AboutPage} />
+        <Route component={NoMatchPage} />
+      </Switch>
     </main>
   </div>
 );
